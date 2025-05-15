@@ -67,7 +67,9 @@ show(photo)
 
 #### 명시적으로 스레드 양보
 
-[`Task.yield()`](https://developer.apple.com/documentation/swift/task/3814840-yield)를 실행해 명시적으로 
+[`Task.yield()`](https://developer.apple.com/documentation/swift/task/3814840-yield)를 실행해 명시적으로 중단점을 잡을 수 있다. 반복문과 같이 작업에 오랜 시간이 걸리는 경우 고려해볼 수 있다. 스위프트가 해당 태스크와 다른 태스크 사이 균형을 맞추는 것을 도와준다.
+
+[`Task.sleep(for:tolerance:clock:)`](https://developer.apple.com/documentation/swift/task/sleep\(for:tolerance:clock:\)) 
 
 ## 주요 기능
 + 실제 활용을 작성
