@@ -15,6 +15,20 @@ Swift는 비동기 프로그래밍과 병렬 프로그래밍을 수행할 수 �
 - 비동기 프로그래밍은 작업을 시작한 후 종료되길 기다리지 않고 (블로킹), 다음 작업이 수행될 수 있도록 하는 방식이다.
 - 병렬 프로그래밍은 실제 물리적으로 여러 자원을 이용해 동시에 여러 작업을 수행하는 방식이다.
 
+### 비동기 함수의 정의
+
+```swift
+func functionName(/* parameters */) async -> ReturnType {
+	let result = /* some async jobs */
+	return result
+}
+
+func functionNameThrowable(/* parameters */) async throws -> ReturnType {
+	let result = /* some async jobs including throwable method calls */
+	return result
+}
+```
+
 
 
 ## 주요 기능
