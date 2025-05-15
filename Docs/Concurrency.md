@@ -24,12 +24,27 @@ func functionName(/* parameters */) async -> ReturnType {
 }
 
 func functionNameThrowable(/* parameters */) async throws -> ReturnType {
-	let result = /* some async jobs including throwable method calls */
+	let result = try /* some async jobs including throwable method calls */
 	return result
 }
 ```
 
+- 함수 시그니쳐에 async 키워드를 포함한다.
 
+### 비동기 함수의 실행
+
+- 갤러리의 이미지 리스트를 가져오고, 그 중 첫번째 이미지를 다운로드하는 가상 예제를 생각해보자.
+- listPhotos(inGallery:)와 downloadPhoto(named:)는 모두 네트워크 작업을 포함하여 비동기 함수로 정의했다고 가정한다.
+
+```swift
+let photoNames = await listPhotos(inGallery: "Summer Vacation")
+let sortedNames = photoNames.sorted()
+let name = sortedNames[0]
+let photo = await downloadPhoto(named: name)
+show(photo)
+```
+
+1. 코드는 await 키워드 전까지 수행된다. await 키워드
 
 ## 주요 기능
 + 실제 활용을 작성
