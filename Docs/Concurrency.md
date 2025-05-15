@@ -63,7 +63,7 @@ show(photo)
 - await은 해당 지점 코드를 중단하기 때문에 특정 컨텍스트에서만 사용 가능하다.
 	- 비동기함수, 메서드, 속성 안에서
 	- `@main`이 지정된 구조체, 클래스, 열거형의 static `main()` 메서드 안에서
-	- 비구조화된 자식 Task 안에서 (unstructured child task)
+	- 구조화되지 않은 자식 Task 안에서 (unstructured child task)
 
 #### 명시적으로 스레드 양보
 
@@ -91,25 +91,25 @@ for try await line in handle.bytes.lines {
 
 - 이렇게 한다면 일련의 비동기 함수를 순차호출하게 된다. 다만 순차 호출할 이유가 없어보인다.
 	```swift
-let firstPhoto = await downloadPhoto(named: photoNames[0])
-let secondPhoto = await downloadPhoto(named: photoNames[1])
-let thirdPhoto = await downloadPhoto(named: photoNames[2])
-
-
-let photos = [firstPhoto, secondPhoto, thirdPhoto]
-show(photos)
+	let firstPhoto = await downloadPhoto(named: photoNames[0])
+	let secondPhoto = await downloadPhoto(named: photoNames[1])
+	let thirdPhoto = await downloadPhoto(named: photoNames[2])
+	
+	
+	let photos = [firstPhoto, secondPhoto, thirdPhoto]
+	show(photos)
 	```
-- 이렇게 하면 병렬적으로 동시에 호출할 수 있다.
+- 이렇게 하면 병렬적으로 동시에 호출할 수 있다. (이전 호출 결과를 기다리지 않는 것이고, 유휴 자원이 부족하면 모든 작업이 동시 호출되지는 않을 수 있다.)
 	```swift
-async let firstPhoto = downloadPhoto(named: photoNames[0])
-async let secondPhoto = downloadPhoto(named: photoNames[1])
-async let thirdPhoto = downloadPhoto(named: photoNames[2])
-
-
-let photos = await [firstPhoto, secondPhoto, thirdPhoto]
-show(photos)
+	async let firstPhoto = downloadPhoto(named: photoNames[0])
+	async let secondPhoto = downloadPhoto(named: photoNames[1])
+	async let thirdPhoto = downloadPhoto(named: photoNames[2])
+	
+	
+	let photos = await [firstPhoto, secondPhoto, thirdPhoto]
+	show(photos)
     ```
-
+- async let 키워드는 암시적으로 자식 [[Docs/Task]]를 만든다.
 ## 주요 기능
 + 실제 활용을 작성
 
