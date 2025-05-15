@@ -71,6 +71,45 @@ show(photo)
 
 [`Task.sleep(for:tolerance:clock:)`](https://developer.apple.com/documentation/swift/task/sleep\(for:tolerance:clock:\)) 
 
+### 비동기 Sequence
+
+for-await-in 구문을 이용해 컬렉션의 요소를 비동기적으로 순회할 수 있다.
+
+```swift
+import Foundation
+
+
+let handle = FileHandle.standardInput
+for try await line in handle.bytes.lines {
+    print(line)
+}
+```
+
+- for-in 구문을 이용해 순회하기 위해 [`Sequence`](https://developer.apple.com/documentation/swift/sequence)를 따라야하는 것처럼, for-await-in 구문을 이용해 순회하려면 [`AsyncSequence`](https://developer.apple.com/documentation/swift/asyncsequence)를 따라야한다.
+
+### 비동기 함수의 병렬 호출
+
+- 이렇게 한다면 일련의 비동기 함수를 순차호출하게 된다. 다만 순차 호출할 이유가 없어보인다.
+	```swift
+let firstPhoto = await downloadPhoto(named: photoNames[0])
+let secondPhoto = await downloadPhoto(named: photoNames[1])
+let thirdPhoto = await downloadPhoto(named: photoNames[2])
+
+
+let photos = [firstPhoto, secondPhoto, thirdPhoto]
+show(photos)
+	```
+- 이렇게 하면 병렬적으로 동시에 호출할 수 있다.
+	```swift
+async let firstPhoto = downloadPhoto(named: photoNames[0])
+async let secondPhoto = downloadPhoto(named: photoNames[1])
+async let thirdPhoto = downloadPhoto(named: photoNames[2])
+
+
+let photos = await [firstPhoto, secondPhoto, thirdPhoto]
+show(photos)
+    ```
+
 ## 주요 기능
 + 실제 활용을 작성
 
