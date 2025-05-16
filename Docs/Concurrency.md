@@ -83,7 +83,7 @@ for try await line in handle.bytes.lines {
 }
 ```
 
-- for-in 구문을 이용해 순회하기 위해 [`Sequence`](https://developer.apple.com/documentation/swift/sequence)를 따라야하는 것처럼, for-await-in 구문을 이용해 순회하려면 [`AsyncSequence`](https://developer.apple.com/documentation/swift/asyncsequence)를 따라야한다.
+- for-in 구문을 이용해 순회하기 위해 [`Sequence`](Docs/Sequence)를 따라야하는 것처럼, for-await-in 구문을 이용해 순회하려면 [`AsyncSequence`](Docs/AsyncSequece)를 따라야한다.
 
 ## 비동기 함수의 병렬 호출
 
