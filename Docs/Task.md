@@ -3,7 +3,7 @@
 
 ## 요약
 - Task는 비동기로 실행될 수 있는 작업의 단위이다.
-- 하나의 Task는 동시에 그 자체 하나만 실행될 수 있지만, 여러 개의 Task를 만들어 실행할 수 있고, 스위픝트가 이를 스케쥴링한다.
+- 하나의 Task는 동시에 그 자체 하나만 실행될 수 있지만, 여러 개의 Task를 만들어 실행할 수 있고, 스위프트가 이를 스케쥴링한다.
 
 ## 구조화된 동시성 프로그래밍 Structured Concurrency
 
@@ -34,7 +34,25 @@ let photos = await withTaskGroup(of: Data.self) { group in // of는 TaskGroup의
 	- 상위 작업에서 하위 작업이 완료될 때까지 기다리는게 명시된다.
 	- 하위 작업에 더 높은 우선순위를 설정하면 상위 작업의 우선순위가 자동으로 올라간다.
 	- 상위 작업이 취소되면 각 하위 작업도 자동으로 취소된다
-- 
+
+
+## Task 취소
+
+작성중
+
+## 구조화되지 않은 동시성 프로그래밍 Unstructured Concurrency
+
+- 위와 같이 태스크 간의 위계를 따지지 않고 동시성 프로그래밍을 할 수도 있다. 이 경우 태스크가 어떤 태스크 그룹이나 부모 태스크에 속하지 않는다.
+- 현재 액터에서 태스크를 만들려면 [`Task.init(priority:operation:)`](https://developer.apple.com/documentation/swift/task/init\(priority:operation:\)-7f0zv)을, 현재 액터와 분리되어 실행되는 태스크를 만들려면 [`Task.detached(priority:operation:)`](https://developer.apple.com/documentation/swift/task/detached\(priority:operation:\)-d24l)를 이용한다.
+
+```swift
+let newPhoto = // ... some photo data ...
+let handle = Task {
+    return await add(newPhoto, toGalleryNamed: "Spring Adventures")
+}
+let result = await handle.value
+```
+
 ## Keywords
 + 파생된 키워드들을 작성
 
