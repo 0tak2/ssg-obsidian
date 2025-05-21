@@ -44,13 +44,35 @@ let photos = await withTaskGroup(of: Data.self) { group in // of는 TaskGroup의
 	- 시스템이 일방적으로 강제 종료하지 않는다. Task 내에서 최소되었음을 확인하고 알아서 대응해야 한다.
 	- 즉, 태스크가 협력하지 않으면 취소되지 않는다.
 - 취소 여부 확인 방법
-	- 취소된 상태면 예외를 던지는 Task.
+	- 취소된 상태면 예외를 던지는 Task.checkCancellation()를 호출
 	- Task.isCancelled (Bool) 값을 체크하고 clean-up 진행
 - 취소된 것을 확인한 후 적당한 종료 작업을 한 뒤 제어권을 내려놓는 방법
 	1. CancellationError를 태스크 내에서 던진다
 	2. nil이나 빈 컬렉션을 반환한다
 	3. 일부 완료된 작업을 반환한다
 
+```swift
+let photos = await withTaskGroup(of: Optional<Data>.self) { group in
+    let photoNames = await listPhotos(inGallery: "Summer Vacation")
+    for name in photoNames {
+        let added = group.addTaskUnlessCancelled {
+            guard !Task.isCancelled else { return nil }
+            return await downloadPhoto(named: name)
+        }
+        guard added else { break }
+    }
+
+
+    var results: [Data] = []
+    for await photo in group {
+        if let photo { results.append(photo) }
+    }
+    return results
+}
+```
+-  [`TaskGroup.addTaskUnlessCancelled(priority:operation:)`](https://developer.apple.com/documentation/swift/taskgroup/addtaskunlesscancelled\(priority:operation:\))를 사용하면 취소된 태스크가 그룹에 추가되는 것을 막을 수 있다. 추가 성공 여부를 Bool로 반환한다.
+- 추가로 내부에서 태스크의 취소 여부를 확인하고 있다. 취소되었다면nil을 반환한다.
+- 나중에 태스크 그룹에서는 nil을 반환하는 태스크를 무시한다 => 일부 ㄷ
 ## 구조화되지 않은 동시성 프로그래밍 Unstructured Concurrency
 
 - 위와 같이 태스크 간의 위계를 따지지 않고 동시성 프로그래밍을 할 수도 있다. 이 경우 태스크가 어떤 태스크 그룹이나 부모 태스크에 속하지 않는다.
