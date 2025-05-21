@@ -72,7 +72,9 @@ let photos = await withTaskGroup(of: Optional<Data>.self) { group in
 ```
 -  [`TaskGroup.addTaskUnlessCancelled(priority:operation:)`](https://developer.apple.com/documentation/swift/taskgroup/addtaskunlesscancelled\(priority:operation:\))를 사용하면 취소된 태스크가 그룹에 추가되는 것을 막을 수 있다. 추가 성공 여부를 Bool로 반환한다.
 - 추가로 내부에서 태스크의 취소 여부를 확인하고 있다. 취소되었다면nil을 반환한다.
-- 나중에 태스크 그룹에서는 nil을 반환하는 태스크를 무시한다 => 일부 ㄷ
+- 나중에 태스크 그룹에서는 nil을 반환하는 태스크를 무시한다 => 일부 데이터만 반환
+
+
 ## 구조화되지 않은 동시성 프로그래밍 Unstructured Concurrency
 
 - 위와 같이 태스크 간의 위계를 따지지 않고 동시성 프로그래밍을 할 수도 있다. 이 경우 태스크가 어떤 태스크 그룹이나 부모 태스크에 속하지 않는다.
