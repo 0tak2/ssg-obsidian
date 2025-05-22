@@ -90,7 +90,7 @@ print("async test") // => 중간에 실행됨
 serialQueue.sync {
     print("Outer")
     
-    serialQueue.async { // serialQueue를 기다리지만 끝나지 않는다...
+    serialQueue.async {
         print("Nested")
     }
 }
