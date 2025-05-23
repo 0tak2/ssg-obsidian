@@ -8,15 +8,32 @@
 	- Reference types with no mutable storage
 	- Reference types that internally manage access to their state
 	- Functions and closures (by marking them with `@Sendable`)
-- 컴파일러가 해당 타입이 Sendable인지 검사하지 않도록 우회하려면 `@unchecked Sendable`를 
-## 주요 기능
-+ 실제 활용을 작성
+- 컴파일러가 해당 타입이 Sendable인지 검사하지 않도록 우회하려면 `@unchecked Sendable`를 쓴다.
 
 ## 코드 예시
-+ 실제 코드 예시를 작성
 
-## Keywords
-+ 파생된 키워드들을 작성
+```swift
+struct Pineapple: Sendable { … } // conforms to Sendable because its a value type
+class Chicken: Sendable { } // ERROR. cannot conform to Sendable because its an unsynchronized reference type.
+
+// contains an array of Sendable types, therefore is Sendable
+struct Crate: Sendable {
+  var pineapples: [Pineapple]
+}
+
+// stored property 'flock' of 'Sendable'-conforming struct 'Coop' has non-sendable type '[Chicken]'
+struct Coop: Sendable {  // ERROR.
+  var flock: [Chicken]
+}
+
+// Can be Sendable if a final class has immutable storage
+final class Chicken: Sendable {
+  let name: String
+  var currentHunger: HungerLevel // 'currentHunger' is mutable, therefore Chicken cannot be Sendable
+}
+```
 
 ## References
-- 참고한 레퍼런스를 작성 (예 : Apple의 공식 문서)
+- [Concurrency - Sendable Types](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/#Sendable-Types)
+- [Sendable](https://developer.apple.com/documentation/swift/sendable)
+- [WWDC21 - Eliminate data races using Swift Concurrency](https://developer.apple.com/videos/play/wwdc2022/110351/)
