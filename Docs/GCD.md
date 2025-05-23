@@ -29,7 +29,7 @@
     - “In other words, a task being synchronous or not speaks to the source of the task. Being serial or concurrent speaks to the destination of the task.”
     - 동기/비동기는 작업을 만든 쪽에 대한 이야기이고, 순차/동시성은 작업이 (디스패치되어) 도달한 곳에 대한 이야기이다.
 
-## 코드 예시
+## [코드 예시](https://github.com/0tak2/ios-study/tree/main/self-study/ConcurrentPlayground.playground)
 
 ### SerialQueue 테스트
 
