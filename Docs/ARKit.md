@@ -29,7 +29,22 @@
 - [ARSession](https://developer.apple.com/documentation/arkit/arsession)
 - The object that manages the major tasks associated with every AR experience, such as motion tracking, camera passthrough, and image analysis.
 
+### 설정
+- [ARConfiguration](https://developer.apple.com/documentation/arkit/arconfiguration)
+- 하위 타입
+	- [`ARBodyTrackingConfiguration`](https://developer.apple.com/documentation/arkit/arbodytrackingconfiguration)
+	- [`ARFaceTrackingConfiguration`](https://developer.apple.com/documentation/arkit/arfacetrackingconfiguration)
+	- [`ARGeoTrackingConfiguration`](https://developer.apple.com/documentation/arkit/argeotrackingconfiguration)
+	- [`ARImageTrackingConfiguration`](https://developer.apple.com/documentation/arkit/arimagetrackingconfiguration)
+	- [`ARObjectScanningConfiguration`](https://developer.apple.com/documentation/arkit/arobjectscanningconfiguration)
+	- [`AROrientationTrackingConfiguration`](https://developer.apple.com/documentation/arkit/arorientationtrackingconfiguration)
+	- [`ARPositionalTrackingConfiguration`](https://developer.apple.com/documentation/arkit/arpositionaltrackingconfiguration)
+	- [`ARWorldTrackingConfiguration`](https://developer.apple.com/documentation/arkit/arworldtrackingconfiguration)
 
+```swift
+let configuration = ARWorldTrackingConfiguration() // ARConfiguration의 하위 타입 중 WorldTracking 선택 - GQ: 다른 트래킹 방법에는 뭐가 있지?
+sceneView.session.run(configuration) // MARK: run a ARKit session
+```
 
 ## 코드 예시
 + 실제 코드 예시를 작성
