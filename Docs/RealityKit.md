@@ -7,7 +7,8 @@
 - AR 특화, 모던 렌더링 라이브러리라는 차이가 있음
 
 ## 주요 기능
-
+- Dynamic Lighting and Shadows
+- Complex Geometries and Textures
 
 ## 코드 예시
 + 실제 코드 예시를 작성
