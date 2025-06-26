@@ -46,6 +46,23 @@ let configuration = ARWorldTrackingConfiguration() // ARConfiguration의 하위 
 sceneView.session.run(configuration) // MARK: run a ARKit session
 ```
 
+### feature points
+- https://developer.apple.com/documentation/arkit/arframe/rawfeaturepoints
+- A point automatically identified by ARKit as part of a continuous surface, but without a corresponding anchor.
+- 실제 세상에서의 좌표와 매핑되는 좌표로, ARKit에서 인식한 것
+
+### hitTest와 raycast
+- 두 방법 모두 AR 환경과 사용자 인터랙션을 구현하는데 필요. 다만 목적과 특성이 다름.
+- 목적
+	- hitTest: 2D 화면과 가상 객체 및 피쳐 포인트가 겹치는 부분을 찾을 때 사용.
+	- raycast:
+- 목적
+	- hitTest:
+	- raycast:
+- 목적
+	- hitTest:
+	- raycast:
+
 ## 코드 예시
 + 실제 코드 예시를 작성
 
