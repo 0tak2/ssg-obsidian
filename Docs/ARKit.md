@@ -27,7 +27,7 @@
 
 ### 세션
 - [ARSession](https://developer.apple.com/documentation/arkit/arsession)
-- 
+- The object that manages the major tasks associated with every AR experience, such as motion tracking, camera passthrough, and image analysis.
 
 
 
