@@ -4,7 +4,7 @@
 
 ## Description
 - [[SceneKit]]과 비슷하게 3D 컨텐츠를 만들기 위한 기능을 제공
-- AR 특화, 모던 렌더링 라이브러리라는 차이가 있음
+- 그러나 AR 특화, 모던 렌더링 라이브러리라는 차이가 있음
 
 ## 주요 기능
 - Dynamic Lighting and Shadows

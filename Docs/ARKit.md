@@ -66,7 +66,7 @@ sceneView.session.run(configuration) // MARK: run a ARKit session
 	- raycast: 개별적인 피쳐 포인트보다, 바닥이나 책상같은 평면 검출에 더 집중되어 있음. 더 넓은 표면 영역에 적합함
 
 ## 코드 예시
-+ 실제 코드 예시를 작성
+- https://github.com/0tak2/ios-study/blob/main/self-study/ARKitPractice/ARKitPractice/ARContainerViewController.swift
 
 ## Keywords
 + 파생된 키워드들을 작성
