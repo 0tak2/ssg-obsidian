@@ -15,4 +15,5 @@
 + 파생된 키워드들을 작성
 
 ## References
-- 참고한 레퍼런스를 작성 (예 : Apple의 공식 문서)
+- https://developer.apple.com/documentation/swiftui/uiviewrepresentable
+- https://www.hohyeonmoon.com/blog/swiftui-tutorial-uikit
