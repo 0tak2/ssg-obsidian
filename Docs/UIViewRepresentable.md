@@ -18,94 +18,50 @@ import Foundation
 import SwiftUI
 import UIKit
 
-/// MARK: UIKit View Controller
-class CounterViewController: UIViewController {
-    let numberLabel = UILabel()
-    let incrementButton = UIButton(type: .system)
-    var buttonDidTapClosure: (() -> Void)?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        numberLabel.text = String(0)
-        numberLabel.textAlignment = .center
-        incrementButton.setTitle("Increment", for: .normal)
-        incrementButton.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
-        
-        view.addSubview(numberLabel)
-        view.addSubview(incrementButton)
-        
-        numberLabel.translatesAutoresizingMaskIntoConstraints = false
-        incrementButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            numberLabel.topAnchor.constraint(equalTo: view.topAnchor),
-            numberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            numberLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            incrementButton.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: 15),
-            incrementButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            incrementButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            incrementButton.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor),
-        ])
+struct UITextFieldRepresentable: UIViewRepresentable {
+    @Binding var text: String
+    
+    func makeUIView(context: Context) -> UITextField {
+        let textField = UITextField(frame: .zero)
+        textField.placeholder = "Input some message here..."
+        textField.delegate = context.coordinator
+        return textField
     }
     
-    @objc private func buttonDidTap() {
-        buttonDidTapClosure?()
-    }
-}
-
-/// MARK: UIKit View Controller Representable
-struct CounterViewControllerRepresentable: UIViewControllerRepresentable {
-    @Binding var count: Int
-    
-    func makeUIViewController(context: Context) -> CounterViewController {
-        let vc = CounterViewController()
-        vc.buttonDidTapClosure = context.coordinator.updateCount
-        return vc
+    func updateUIView(_ uiTextField: UITextField, context: Context) {
+        uiTextField.text = text
     }
     
-    func updateUIViewController(_ uiViewController: CounterViewController, context: Context) { // MARK: Updates the state of the specified view with new information from SwiftUI
-        uiViewController.numberLabel.text = "\(count)"
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(text: $text)
     }
     
-    func makeCoordinator() -> Coordnator {
-        Coordnator(count: $count)
-    }
-    
-    class Coordnator { // MARK: UIKit -> SwiftUI 데이터 전달시 makeCoordinator 사용. Coordnator는 각종 UIKit 객체의 Delegate가 될 수도 있음
-        @Binding var count: Int
+    class Coordinator: NSObject, UITextFieldDelegate {
+        @Binding var text: String
         
-        init(count: Binding<Int>) {
-            self._count = count
+        init(text: Binding<String>) {
+            self._text = text
         }
         
-        func updateCount() {
-            count += 1
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            text = textField.text ?? ""
         }
     }
 }
 
-struct ContentView: View {
-    @State private var count = 0
+
+struct ContentView: View {}
+    @State private var message = ""
     
     var body: some View {
         VStack {
-            HStack {
-                ForEach(0..<count, id: \.self) { count in
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                }
-            }
-            
-            CounterViewControllerRepresentable(count: $count)
+            Text("Your Input: \(message)")
+            UITextFieldRepresentable(text: $message)
         }
         .padding()
     }
 }
+
 ```
 
 ## Keywords
