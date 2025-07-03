@@ -13,8 +13,11 @@
 
 
 ## 알려진 제약
-- Binding을 넘길 수는 없음
-	- 클로져를 넘겨서 UIKit VC와 통신하게는 할 수 있음
+- Binding 등을 넘길 때 복잡해짐. Binding 객체에 getter, setter를 넣어서는 가능
+    ```swift
+	let swiftUITextField = CustomSwiftUITextView(text: Binding(get: { self.text }, set: { newValue in self.text = newValue })
+    ```
+- 다른 방법으로 클로져를 넘겨서 UIKit VC와 통신하게 할 수 있음
 	- 참고: https://stackoverflow.com/a/64730736
 - 가능한 Presentation 역할을 하는 뷰만 호스팅하는게 좋아보임
 
