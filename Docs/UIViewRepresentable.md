@@ -67,6 +67,9 @@ struct ContentView: View {}
 
 ```
 
+## Feedbacks
+- 제옹: 브릿지하는데 자원 비용이 들기 때문에, AR을 활용할 때 사용하려는 거라면 그냥 모두 UIKit으로 짜는게 나을 수 있다. 신중하게 고민.
+
 ## Keywords
 + 파생된 키워드들을 작성
 
