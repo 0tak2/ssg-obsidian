@@ -1,6 +1,5 @@
 >[!question]
->GQ1. GQ를 쓰세요
->GQ2. GQ를 쓰세요
+>GQ1. SwiftUI에서 UIKit ViewController를 쓰려면 어떻게 해야하지?
 
 ## Description
 - UIKit의 UIViewController 객체를 SwiftUI에서 관리하고 싶을 때 사용하는 프로토콜

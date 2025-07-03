@@ -1,6 +1,5 @@
 >[!question]
->GQ1. GQ를 쓰세요
->GQ2. GQ를 쓰세요
+>GQ1. SwiftUI에서 UIKit View를 쓰려면 어떻게 해야하지?
 
 ## Description
 - UIKit의 UIView 객체를 SwiftUI에서 관리하고 싶을 때 사용하는 프로토콜
@@ -18,20 +17,24 @@ import Foundation
 import SwiftUI
 import UIKit
 
+/// - MARK: UIViewRepresentable
 struct UITextFieldRepresentable: UIViewRepresentable {
     @Binding var text: String
-    
+	
+	/// 처음 렌더링될 때 호출됨
     func makeUIView(context: Context) -> UITextField {
         let textField = UITextField(frame: .zero)
         textField.placeholder = "Input some message here..."
         textField.delegate = context.coordinator
         return textField
     }
-    
+
+	/// 상태 변경 시 호출됨
     func updateUIView(_ uiTextField: UITextField, context: Context) {
         uiTextField.text = text
     }
-    
+
+	/// 가장 먼저 호출됨
     func makeCoordinator() -> Coordinator {
         return Coordinator(text: $text)
     }
