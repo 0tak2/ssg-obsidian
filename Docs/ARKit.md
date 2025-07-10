@@ -65,6 +65,10 @@ sceneView.session.run(configuration) // MARK: run a ARKit session
 	- hitTest: 피쳐 포인트를 알아낼 수 있지만, 표면에 대한 자세한 정보를 가져오거나 활용하고 싶을 때에는 불편함
 	- raycast: 개별적인 피쳐 포인트보다, 바닥이나 책상같은 평면 검출에 더 집중되어 있음. 더 넓은 표면 영역에 적합함
 
+### 좌표계
+![[Pasted image 20250710102802.png]]
+- 디바이스를 기준으로 x축은 좌/우, y축은 상/하, z축은 앞/뒤를 의미함
+
 ## 코드 예시
 - https://github.com/0tak2/ios-study/blob/main/self-study/ARKitPractice/ARKitPractice/ARContainerViewController.swift
 
