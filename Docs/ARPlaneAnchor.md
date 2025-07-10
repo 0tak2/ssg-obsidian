@@ -9,6 +9,7 @@
 
 ## 주요 기능
 + transform [`simd_float4x4`](https://developer.apple.com/documentation/simd/simd_float4x4)
+	+ 상위 타입인 ARAnchor의 프로퍼티.
 	+ 앵커가 배치된 AR 세션의 월드 좌표 공간에 대한 앵커의 위치, 방향, 배율을 인코딩하는 행렬
 	+ 뭔말일까? https://chatgpt.com/share/686f24ab-ecb0-800a-9cb1-d7e6704c27da
 
@@ -21,7 +22,14 @@
 - extent
 	- Deprecated. planeExtent를 대신 사용.
 		- 그렇지만 많은 예제가 아직 이 프로퍼티를 사용하고 있음.
-	- 
+	- Inspecting Plane Size
+		- var width: Float
+			The estimated width of the plane.
+var height: Float
+The estimated height of the plane.
+Inspecting Plane Y-Rotation
+var rotationOnYAxis: Float
+A radian value that indicates a plane’s y-axis orientation.
 
 ## 코드 예시
 + 실제 코드 예시를 작성
