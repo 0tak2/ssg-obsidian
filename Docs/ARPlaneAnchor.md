@@ -5,7 +5,7 @@
 ## Description
 - ARkit이 물리 세계에서 감지한 2D 평면에 대한 앵커
 	An anchor for a 2D planar surface that ARKit detects in the physical environment.
-- 
+- ARSession을 World Tracking 되도록 설정했을 때, planeDetection이 활성화되어있다면 
 
 ## 주요 기능
 + transform [`simd_float4x4`](https://developer.apple.com/documentation/simd/simd_float4x4)
