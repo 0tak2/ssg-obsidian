@@ -19,17 +19,26 @@
 |마지막 열의 상위 3개 값 (`column.3.xyz`)|위치 (position, translation)|
 |마지막 행|보통 `(0, 0, 0, 1)`|
 
-- extent
+- extent: [`SIMD3`](https://developer.apple.com/documentation/Swift/SIMD3)<[`Float`](https://developer.apple.com/documentation/Swift/Float)>
 	- Deprecated. planeExtent를 대신 사용.
 		- 그렇지만 많은 예제가 아직 이 프로퍼티를 사용하고 있음.
+	- x, z에 너비, 높이가 들어감
+
+- planeExtent: ARPlaneExtent
+	- 너비, 높이, y축 기준 회전 방향을 나타냄
+	- center와 마찬가지로 ARSession 시작 이후 변경될 수 있음.
 	- Inspecting Plane Size
 		- var width: Float
 			The estimated width of the plane.
-var height: Float
-The estimated height of the plane.
-Inspecting Plane Y-Rotation
-var rotationOnYAxis: Float
-A radian value that indicates a plane’s y-axis orientation.
+		- var height: Float
+			The estimated height of the plane.
+	- Inspecting Plane Y-Rotation
+		- var rotationOnYAxis: Float
+			A radian value that indicates a plane’s y-axis orientation.
+
+- center: [`SIMD3`](https://developer.apple.com/documentation/Swift/SIMD3)<[`Float`](https://developer.apple.com/documentation/Swift/Float)>
+	- 처음에는 (0,0,0)
+	- 이후 ARSession 진행되며 바뀔 수 있음.
 
 ## 코드 예시
 + 실제 코드 예시를 작성
