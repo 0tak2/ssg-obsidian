@@ -8,6 +8,7 @@
 
 ## 주의할 점
 - GameKit 클래스와 API를 호출하기 전에 반드시 앱에 GameCenter를 프로젝트에서 활성화하고 런타임에서 로컬 유저를 초기화해야 함. 그렇지 않으면 [`GKError.Code.notAuthenticated`](https://developer.apple.com/documentation/gamekit/gkerror/code/notauthenticated) 발생
+- GameCenter가 iOS 26부터는 Games로 변경됨. API 수준에서 큰 변화는 없겠지만 GameCenter UI를 직접 사용하는 경우 룩앤필이 달라지는 문제는 불가피
 
 ## 주요 기능
 + 리더보드(GKLeaderboard)
@@ -18,6 +19,18 @@
 	- 게임센터의 기본적인 UI를 제공
 	- 데이터를 게임 안으로 끌어올 수도 있음
 	- [HIG](https://developer.apple.com/design/human-interface-guidelines/game-center)
+
+## 준비
+
+### Game Center 앱에 활성화
+1. 프로젝트 파일을 열고 Signing & Capabilities 탭을 연다
+2. Capabilities에 Game Center를 추가한다
+	![[Docs/Assets/Pasted image 20250717101154.png]]
+
+### App Store Connect 준비
+1. 현재 프로젝트의 Bunlde ID를 참고해 앱 레코드를 추가한다 [참고](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app/)
+	![[Docs/Assets/Pasted image 20250717101044.png]]
+2. ㅎ
 
 ## Keywords
 + 파생된 키워드들을 작성
