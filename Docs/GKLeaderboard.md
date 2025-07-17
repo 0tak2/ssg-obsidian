@@ -53,7 +53,20 @@
 	- 특정 리더보드 인스턴스에서 점수를 가져오려면 [`loadEntries(for:timeScope:range:completionHandler:)`](https://developer.apple.com/documentation/gamekit/gkleaderboard/loadentries\(for:timescope:range:completionhandler:\))를 사용한다.
 
 ```swift
+let leaderboards = try await GKLeaderboard.loadLeaderboards(IDs: GameLevel.allCases.map(\.leaderboardId))
 
+for leaderboard in leaderboards {
+	let result = try await leaderboard.loadEntries(for: GKLeaderboard.PlayerScope.global, timeScope: .allTime, range: NSMakeRange(1, 100))
+	let (localPlayerEntry, entries, totalPlayerCount) = result
+	
+	print("=== \(leaderboard.title ?? "MISSING TITLE"), \(leaderboard.baseLeaderboardID) ===")
+	print("My Score: \(localPlayerEntry?.score ?? -1)")
+	print("Others: ")
+	
+	entries.forEach { entry in
+		print("\t\(entry.player.displayName), \(entry.score)")
+	}
+}
 ```
 
 ## Keywords
