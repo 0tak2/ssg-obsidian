@@ -36,11 +36,9 @@
 4. 하단의 Game Center에서 Game Center 기능을 해당 버전에 활성화하고 어떤 컴포넌트를 추가할지 지정할 수 있다.
 	![[Pasted image 20250717102101.png]]
 
-## 로컬 플레이어 인증하기
-- 매번 앱에서 GameKit을 찾혹
-
 ## Keywords
 + 파생된 키워드들을 작성
++ [[GKLocalPlayer]]
 + [[GKLeaderboard]]
 
 ## References
