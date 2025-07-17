@@ -21,10 +21,35 @@
 - 현지화를 적용해야 인게임 대시보드에서 리더보드 이름이 잘 표시된다.
 	![[Pasted image 20250717112125.png]]
 
-
 ## 코드 예시
 + 리더보드에 점수 추가
-	- `submitScore(_:context:player:completionHandler:) 또는 
+	- 특정한 리더보드 인스턴스에 점수 추가: [`submitScore(_:context:player:completionHandler:)` 또는 `submitScore(_:context:player:) async`](https://developer.apple.com/documentation/gamekit/gkleaderboard/submitscore(_:context:player:completionhandler:)) (인스턴스 메서드)
+	- 한 개 이상의 리더보드에 리더보드 아이디를 명시하여 점수 추가: [`submitScore(_:context:player:leaderboardIDs:completionHandler:)` 또는 `submitScore(_:context:player:leaderboardIDs) async`](https://developer.apple.com/documentation/gamekit/gkleaderboard/submitscore(_:context:player:leaderboardids:completionhandler:)) (타입 메서드)
+
+	```swift
+	    func submitRecord() {
+	        guard let elapsedTime = self.lastGameResult?.elapsedTime,
+	           let lastGameLevel = self.lastGameResult?.level else {
+	            print("❌ No last result")
+	            return
+	        }
+	        
+	        Task.detached {
+	            do {
+	                try await GKLeaderboard.submitScore(Int(elapsedTime),
+	                                                    context: 0,
+	                                                    player: GKLocalPlayer.local,
+	                                                    leaderboardIDs: [lastGameLevel.leaderboardId])
+	                print("score submitted")
+	            } catch {
+	                print("error during submitting score: \(error)")
+	            }
+	        }
+	    }
+	```
+
+- 리더보드 읽기
+	- 
 
 ## Keywords
 + 파생된 키워드들을 작성
