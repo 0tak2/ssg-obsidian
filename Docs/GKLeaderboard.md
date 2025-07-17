@@ -10,12 +10,21 @@
 - Recurring 리더보드(주기적으로 초기화됨)에 점수 저장, 랭킹 불러오기
 
 ## 리더보드 만들기
-![[Pasted image 20250717111551.png]]
-![[Pasted image 20250717111618.png]]
-![[Pasted image 20250717111639.png]]
+- Xcode에서 프로젝트에 GameKit File을 추가한다.
+	![[Pasted image 20250717111551.png]]
+- 편집기가 열리는데, 왼쪽 컬럼의 하단 + 버튼을 눌러 리더보드를 추가한다.
+	![[Pasted image 20250717111618.png]]
+- 이름, ID, 형식을 지정할 수 있다.
+	![[Pasted image 20250717111639.png]]
+- 완료했으면 App Store Connect에 Push한다.
+	![[Pasted image 20250717111748.png]]
+- 현지화를 적용해야 인게임 대시보드에서 리더보드 이름이 잘 표시된다.
+	![[Pasted image 20250717112125.png]]
+
 
 ## 코드 예시
-+ 실제 코드 예시를 작성
++ 리더보드에 점수 추가
+	- `submitScore(_:context:player:completionHandler:) 또는 
 
 ## Keywords
 + 파생된 키워드들을 작성
