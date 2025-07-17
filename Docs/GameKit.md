@@ -30,7 +30,14 @@
 ### App Store Connect 준비
 1. 현재 프로젝트의 Bunlde ID를 참고해 앱 레코드를 추가한다 [참고](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app/)
 	![[Docs/Assets/Pasted image 20250717101044.png]]
-2. ㅎ
+2. 해당 앱 레코드에 들어가 좌측의 `성장 및 마케팅 -> Game Center`로 들어가면 GameCenter 컴포넌트를 추가할 수 있다. (리더보드, 업적 등)
+	![[Pasted image 20250717101924.png]]
+3. 이렇게 추가한 GameCenter 컴포넌트는 앱의 버전 별로 추가해줘야 한다. 앱을 한 번 App Store Connect에 업로드 한 후 해당 버전으로 들어간다.
+4. 하단의 Game Center에서 Game Center 기능을 해당 버전에 활성화하고 어떤 컴포넌트를 추가할지 지정할 수 있다.
+	![[Pasted image 20250717102101.png]]
+
+## 로컬 플레이어 인증하기
+- 매번 앱에서 GameKit을 찾혹
 
 ## Keywords
 + 파생된 키워드들을 작성

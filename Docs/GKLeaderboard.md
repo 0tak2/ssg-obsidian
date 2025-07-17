@@ -1,6 +1,6 @@
 >[!question]
->GQ1. GQ를 쓰세요
->GQ2. GQ를 쓰세요
+>GQ1. 내 앱에 GameKit으로 리더보드를 추가하려면 어떻게 해야할까?
+>GQ2. GameKit 리더보드에 점수를 추가하려면 어떻게 해야할까?
 
 ## Description
 - 개요와 설명을 작성
