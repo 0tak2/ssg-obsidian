@@ -49,7 +49,12 @@
 	```
 
 - 리더보드 읽기
-	- 
+	- 한 개 이상의 리더보드를 아이디를 통해서 불러오려면 [`loadLeaderboards(IDs:completionHandler:)`](https://developer.apple.com/documentation/gamekit/gkleaderboard/loadleaderboards\(ids:completionhandler:\))를 사용한다.
+	- 특정 리더보드 인스턴스에서 점수를 가져오려면 [`loadEntries(for:timeScope:range:completionHandler:)`](https://developer.apple.com/documentation/gamekit/gkleaderboard/loadentries\(for:timescope:range:completionhandler:\))를 사용한다.
+
+```swift
+
+```
 
 ## Keywords
 + 파생된 키워드들을 작성
