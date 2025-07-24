@@ -17,7 +17,41 @@
 
 
 ## 코드 예시
-+ 실제 코드 예시를 작성
+
+### 기본 쉐입 그리기
+
+```swift
+let renderer = UIGraphicsImageRenderer(size: .init(width: 200, height: 200))
+return renderer.image { context in
+	UIColor.darkGray.setStroke()
+	context.stroke(renderer.format.bounds)
+	UIColor(red: 158/255, green: 215/255, blue: 245/255, alpha: 1).setFill()
+	context.fill(CGRect(x: 1, y: 1, width: 140, height: 140))
+}
+```
+
+![[Pasted image 20250724105426.png]]
+
+### 블렌드 모드 (겹치기)
+
+```swift
+let renderer = UIGraphicsImageRenderer(size: .init(width: 200, height: 200))
+return renderer.image { context in
+	UIColor.darkGray.setStroke()
+	context.stroke(renderer.format.bounds)
+	UIColor(red: 158/255, green: 215/255, blue: 245/255, alpha: 1).setFill()
+	context.fill(CGRect(x: 1, y: 1, width: 140, height: 140))
+	UIColor(red: 145/255, green: 211/255, blue: 205/255, alpha: 1).setFill()
+	context.fill(CGRect(x: 60, y: 60, width: 140, height: 140), blendMode: .multiply)
+}
+```
+
+![[Pasted image 20250724105511.png]]
+
+### Core Grapics 직접 쓰기
+
+```s
+```
 
 ## Keywords
 + 파생된 키워드들을 작성
